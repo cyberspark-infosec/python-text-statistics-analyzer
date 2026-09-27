@@ -4,6 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from collections import Counter 
 import json
+from matplotlib.widgets import Button
 
 def load_text(filepath):
 
@@ -89,13 +90,21 @@ if __name__=="__main__":
     with open("Data/Processed/cleaned_text.txt", "w", encoding="utf-8") as file:
         file.write(cleaned_text)
 
-    stats=calculate_basic_stats(cleaned_text)
-    stats_df = pd.DataFrame([stats])
+    stats = calculate_basic_stats(cleaned_text)
 
-    stats_df.to_csv( 
+    document_metadata = {
+    "document_id": "DOC001",
+    "filename": "alice_in_wonderland.txt",
+    "word_count": stats["words"],
+    "character_count": stats["characters"]
+}
+
+    stats_df = pd.DataFrame([document_metadata])
+
+    stats_df.to_csv(
     "Data/Processed/document_stats.csv",
     index=False
-               )
+)
     word_frequency = calculate_word_frequency(cleaned_text)
 
     print("===================================")

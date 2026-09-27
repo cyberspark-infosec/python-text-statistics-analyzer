@@ -1,2 +1,2 @@
-characters,words,sentences,average_word_length,average_sentence_length
-143750,26530,1655,4.396343761779118,16.445317220543807
+document_id,filename,word_count,character_count
+DOC001,alice_in_wonderland.txt,26530,143750
